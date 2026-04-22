@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamza Yaqoob | Web Developer | Full Stack Developer</title>
+  <meta name="description" content="Portfolio of Hamza Yaqoob, Web Developer and Full Stack Developer with 9+ years of experience in custom websites, Laravel, WordPress, WooCommerce, APIs, dashboards, and e-commerce development." />
+  <style>
+    :root {
+      --bg: #0b1120;
+      --bg-soft: #121a2b;
+      --panel: rgba(255,255,255,0.06);
+      --panel-strong: rgba(255,255,255,0.1);
+      --text: #eef2ff;
+      --muted: #b8c1d9;
+      --line: rgba(255,255,255,0.12);
+      --accent: #6ea8fe;
+      --accent-2: #8ef0c8;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(110,168,254,0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(142,240,200,0.12), transparent 25%),
+        linear-gradient(180deg, #0a0f1d 0%, #0d1425 42%, #0a1120 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(7, 11, 22, 0.68);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 76px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-role {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #4e86ff);
+      color: white;
+      box-shadow: 0 12px 28px rgba(78,134,255,0.32);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.12);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 72px 0 42px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-card,
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 42px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(110,168,254,0.28), transparent 65%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--accent-2);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.3rem, 5vw, 4.5rem);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #ffffff 0%, #b8cbff 52%, #8ef0c8 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      margin: 18px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.6rem;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .intro-panel {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .intro-panel h3,
+    .section-title h2,
+    .contact-card h3 {
+      margin: 0;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .intro-panel p,
+    .contact-card p,
+    .section-title p {
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-item {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .mini-item strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 0.98rem;
+    }
+
+    main section {
+      padding: 28px 0;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin-bottom: 22px;
+    }
+
+    .section-kicker {
+      color: var(--accent-2);
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .services-grid,
+    .projects-grid,
+    .skills-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .service-card,
+    .project-card,
+    .skill-card,
+    .about-card,
+    .contact-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .service-card,
+    .skill-card {
+      padding: 24px;
+    }
+
+    .service-card h3,
+    .project-card h3,
+    .skill-card h3,
+    .about-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+      letter-spacing: -0.01em;
+    }
+
+    .service-card p,
+    .project-card p,
+    .skill-card p,
+    .about-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-card {
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .project-tag {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(110,168,254,0.12);
+      color: #cfe0ff;
+      border: 1px solid rgba(110,168,254,0.22);
+      font-size: 0.82rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .project-link {
+      color: var(--accent-2);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 0.83rem;
+      font-weight: 700;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .about-card,
+    .contact-card {
+      padding: 28px;
+    }
+
+    .why-list,
+    .contact-list {
+      padding: 0;
+      margin: 18px 0 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .why-list li,
+    .contact-list li {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+    }
+
+    .contact-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .footer {
+      padding: 32px 0 50px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .contact-wrap,
+      .about-grid,
+      .projects-grid,
+      .services-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .intro-panel,
+      .contact-card,
+      .about-card {
+        padding: 26px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        min-height: auto;
+        padding: 18px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .hero {
+        padding-top: 34px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .intro-panel,
+      .service-card,
+      .project-card,
+      .skill-card,
+      .about-card,
+      .contact-card {
+        border-radius: 18px;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+
+    @media print {
+      html, body {
+        background: #0a1120 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        font-size: 10.5pt;
+      }
+
+      .site-header {
+        position: static;
+        backdrop-filter: none;
+        background: rgba(7, 11, 22, 0.92);
+      }
+
+      .container {
+        width: 100%;
+      }
+
+      .hero {
+        padding: 18px 0 12px;
+      }
+
+      main section {
+        padding: 8px 0;
+      }
+
+      .nav {
+        min-height: auto;
+        padding: 6px 0 10px;
+      }
+
+      .nav-links a:not(.btn) {
+        display: none;
+      }
+
+      .hero-grid,
+      .contact-wrap,
+      .about-grid,
+      .projects-grid,
+      .services-grid,
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.3fr 0.7fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .hero-card,
+      .panel,
+      .service-card,
+      .project-card,
+      .skill-card,
+      .about-card,
+      .contact-card {
+        box-shadow: none;
+      }
+
+      .hero-card,
+      .intro-panel,
+      .service-card,
+      .project-card,
+      .skill-card,
+      .about-card,
+      .contact-card {
+        padding: 16px;
+      }
+
+      .hero h1 {
+        font-size: 27pt;
+      }
+
+      .hero p,
+      .service-card p,
+      .project-card p,
+      .skill-card p,
+      .about-card p,
+      .contact-card p,
+      .why-list li,
+      .contact-list li,
+      .stat span,
+      .mini-item span {
+        font-size: 8.8pt;
+      }
+
+      .hero-stats {
+        margin-top: 14px;
+      }
+
+      .stat strong {
+        font-size: 15pt;
+      }
+
+      .section-title {
+        margin-bottom: 12px;
+      }
+
+      .section-title h2,
+      .contact-card h3,
+      .intro-panel h3 {
+        font-size: 15pt;
+      }
+
+      .service-card h3,
+      .project-card h3,
+      .skill-card h3,
+      .about-card h3 {
+        font-size: 11pt;
+      }
+
+      .section-kicker,
+      .project-tag,
+      .chip,
+      .project-link,
+      .eyebrow,
+      .brand-role,
+      .nav-links a,
+      .footer {
+        font-size: 8pt;
+      }
+
+      .hero-actions,
+      .contact-cta {
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .btn {
+        min-height: 34px;
+        padding: 0 12px;
+        font-size: 8.4pt;
+        box-shadow: none !important;
+      }
+
+      .project-tech,
+      .why-list,
+      .contact-list,
+      .mini-list {
+        gap: 6px;
+      }
+
+      .why-list li,
+      .contact-list li,
+      .mini-item,
+      .stat {
+        padding: 9px 11px;
+      }
+
+      .footer {
+        padding: 10px 0 0;
+      }
+
+      .footer-inner {
+        padding-top: 10px;
+      }
+
+      a[href^="http"]::after,
+      a[href^="mailto"]::after {
+        content: "";
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-name">Hamza Yaqoob</div>
+        <div class="brand-role">Web Developer - Full Stack Developer</div>
+      </div>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="btn btn-primary">Let’s Talk</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <div class="eyebrow">9+ Years Experience - 100+ Projects Completed</div>
+          <h1>Building <span>reliable websites</span>, scalable backend systems, and premium web experiences.</h1>
+          <p>
+            I’m Hamza Yaqoob, a Web Developer and Full Stack Developer focused on custom website development,
+            e-commerce solutions, backend systems, API integrations, admin dashboards, and performance-driven builds.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="#contact" class="btn btn-secondary">Hire Me</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>100+</strong>
+              <span>Projects across Fiverr, Upwork, and direct clients</span>
+            </div>
+            <div class="stat">
+              <strong>9+</strong>
+              <span>Years of hands-on development experience</span>
+            </div>
+            <div class="stat">
+              <strong>Full Stack</strong>
+              <span>From frontend UI to backend architecture and integrations</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel intro-panel">
+          <div>
+            <h3>Core Focus</h3>
+            <p>My strongest area is backend coding, where clean logic, stability, and scalable structure matter most.</p>
+          </div>
+
+          <div class="mini-list">
+            <div class="mini-item">
+              <strong>Main Money Service</strong>
+              <span>Website Development</span>
+            </div>
+            <div class="mini-item">
+              <strong>Specialized In</strong>
+              <span>Laravel, CodeIgniter, WordPress, WooCommerce, APIs, Dashboards</span>
+            </div>
+            <div class="mini-item">
+              <strong>Work Style</strong>
+              <span>Clean corporate execution with premium agency-level presentation</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-title">
+          <span class="section-kicker">Services</span>
+          <h2>Development services that solve real business needs</h2>
+          <p>I work on complete websites, backend systems, e-commerce stores, integrations, dashboards, and technical improvements that help businesses run smoothly.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <h3>Website Development</h3>
+            <p>Custom business websites, landing pages, and scalable web solutions built for performance, usability, and growth.</p>
+          </article>
+          <article class="service-card">
+            <h3>WordPress & WooCommerce</h3>
+            <p>Professional WordPress websites, custom WooCommerce stores, checkout improvements, and tailored functionality.</p>
+          </article>
+          <article class="service-card">
+            <h3>Backend Development</h3>
+            <p>Robust backend architecture with Laravel and CodeIgniter for business workflows, data handling, and admin systems.</p>
+          </article>
+          <article class="service-card">
+            <h3>API Integrations</h3>
+            <p>Twilio, payment gateways, third-party services, and custom APIs integrated cleanly into your web platform.</p>
+          </article>
+          <article class="service-card">
+            <h3>Dashboards & Admin Panels</h3>
+            <p>Custom dashboards and admin panels designed to manage data, streamline operations, and improve visibility.</p>
+          </article>
+          <article class="service-card">
+            <h3>Bug Fixing & Optimization</h3>
+            <p>Fixes for broken functionality, performance bottlenecks, loading issues, and UI/UX improvements across existing projects.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-title">
+          <span class="section-kicker">Featured Work</span>
+          <h2>Selected projects and platforms I’ve worked on</h2>
+          <p>These projects reflect my experience with complete website development, backend systems, e-commerce, and business-focused web applications.</p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <h3>Diddikicks</h3>
+                <p>Complete website development for a live business platform with backend workflows, admin features, and custom functionality.</p>
+              </div>
+              <span class="project-tag">Full Platform</span>
+            </div>
+            <a class="project-link" href="https://diddikicks.co.uk" target="_blank" rel="noopener">diddikicks.co.uk</a>
+            <div class="project-tech">
+              <span class="chip">Laravel</span>
+              <span class="chip">HTML</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">Custom Backend</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <h3>Sarah Al Sultan</h3>
+                <p>Complete website development with premium presentation, booking-focused structure, and tailored frontend implementation.</p>
+              </div>
+              <span class="project-tag">Business Website</span>
+            </div>
+            <a class="project-link" href="https://sarahalsultan.com" target="_blank" rel="noopener">sarahalsultan.com</a>
+            <div class="project-tech">
+              <span class="chip">CodeIgniter</span>
+              <span class="chip">Custom Development</span>
+              <span class="chip">Responsive UI</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <h3>Webrrific</h3>
+                <p>Website development with backend functionality and structured implementation for a polished digital presence.</p>
+              </div>
+              <span class="project-tag">Website + Backend</span>
+            </div>
+            <a class="project-link" href="https://webrrific.com" target="_blank" rel="noopener">webrrific.com</a>
+            <div class="project-tech">
+              <span class="chip">Backend Development</span>
+              <span class="chip">Frontend UI</span>
+              <span class="chip">Custom Features</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <h3>WaffenPro</h3>
+                <p>E-commerce website setup and development focused on store functionality, product experience, and online sales flow.</p>
+              </div>
+              <span class="project-tag">E-commerce</span>
+            </div>
+            <a class="project-link" href="https://waffenpro.de/" target="_blank" rel="noopener">waffenpro.de</a>
+            <div class="project-tech">
+              <span class="chip">WooCommerce</span>
+              <span class="chip">Store Setup</span>
+              <span class="chip">Checkout Flow</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <h3>Figurio</h3>
+                <p>E-commerce website developed using PrestaShop with product management, storefront configuration, and backend handling.</p>
+              </div>
+              <span class="project-tag">PrestaShop Store</span>
+            </div>
+            <a class="project-link" href="https://figurio.de/" target="_blank" rel="noopener">figurio.de</a>
+            <div class="project-tech">
+              <span class="chip">PrestaShop</span>
+              <span class="chip">E-commerce</span>
+              <span class="chip">Backend Setup</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <h3>Custom Client Systems</h3>
+                <p>Over 100 completed projects including websites, dashboards, bug fixing, speed optimization, payment integrations, and admin systems.</p>
+              </div>
+              <span class="project-tag">100+ Projects</span>
+            </div>
+            <a class="project-link" href="#contact">Available on request</a>
+            <div class="project-tech">
+              <span class="chip">APIs</span>
+              <span class="chip">Dashboards</span>
+              <span class="chip">Bug Fixing</span>
+              <span class="chip">Optimization</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">
+          <span class="section-kicker">Skills & Stack</span>
+          <h2>Technology stack I use in real client work</h2>
+          <p>I work comfortably across frontend, backend, CMS platforms, databases, hosting, and third-party integrations.</p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card">
+            <h3>Backend</h3>
+            <p>PHP, Laravel, CodeIgniter, custom logic, admin systems, secure workflows, and scalable application structure.</p>
+          </article>
+          <article class="skill-card">
+            <h3>Frontend</h3>
+            <p>HTML, CSS, JavaScript, jQuery, responsive UI implementation, polished layouts, and premium presentation.</p>
+          </article>
+          <article class="skill-card">
+            <h3>CMS & E-commerce</h3>
+            <p>WordPress, WooCommerce, PrestaShop, customizations, checkout flows, store setup, and conversion-focused improvements.</p>
+          </article>
+          <article class="skill-card">
+            <h3>Database & DevOps</h3>
+            <p>MySQL, cPanel, hosting setup, deployment, troubleshooting, speed optimization, and production issue resolution.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <span class="section-kicker">Why Work With Me</span>
+          <h2>Strong backend thinking with business-focused execution</h2>
+          <p>I’m not limited to surface-level design work. I help clients build stable systems, practical solutions, and websites that are easier to manage and scale.</p>
+        </div>
+
+        <div class="about-grid">
+          <article class="about-card">
+            <h3>What I’m Best At</h3>
+            <p>My strongest area is backend coding. I enjoy solving real logic, workflow, and system problems while keeping the overall solution clean, maintainable, and reliable.</p>
+            <ul class="why-list">
+              <li>Clean backend architecture and problem-solving mindset</li>
+              <li>Ability to handle both complete websites and custom business logic</li>
+              <li>Focus on performance, stability, and practical implementation</li>
+            </ul>
+          </article>
+
+          <article class="about-card">
+            <h3>Why Clients Hire Me</h3>
+            <p>Clients usually appreciate that I can understand technical requirements quickly, suggest the right approach, and build solutions that work in real-world use.</p>
+            <ul class="why-list">
+              <li>Reliable communication and long-term support mindset</li>
+              <li>Experience with Fiverr, Upwork, and direct client projects</li>
+              <li>Balanced approach between clean UI and strong backend execution</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-wrap">
+        <article class="contact-card">
+          <span class="section-kicker">Let’s Work Together</span>
+          <h3>Need a developer for your next website or backend project?</h3>
+          <p>I’m open to fixed-price and hourly work depending on the scope. If you need a complete website, e-commerce store, custom dashboard, or backend integration, let’s discuss your project.</p>
+          <div class="contact-cta">
+            <a href="mailto:hamzayaqoob995@gmail.com" class="btn btn-primary">Email Me</a>
+            <a href="https://www.upwork.com/freelancers/hamzayaqoob10" target="_blank" rel="noopener" class="btn btn-secondary">Upwork</a>
+            <a href="https://www.fiverr.com/hamza__yaqoob" target="_blank" rel="noopener" class="btn btn-secondary">Fiverr</a>
+          </div>
+        </article>
+
+        <article class="contact-card">
+          <h3>Quick Info</h3>
+          <ul class="contact-list">
+            <li><strong>Name:</strong> Hamza Yaqoob</li>
+            <li><strong>Title:</strong> Web Developer / Full Stack Developer</li>
+            <li><strong>Experience:</strong> 9+ Years</li>
+            <li><strong>Projects:</strong> 100+</li>
+            <li><strong>Main Service:</strong> Website Development</li>
+            <li><strong>Work Platforms:</strong> Fiverr, Upwork, Direct Clients</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Hamza Yaqoob. All rights reserved.</span>
+      <span>Web Developer - Full Stack Developer</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
